@@ -27,11 +27,11 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
                     image: AssetImage('assets/images/profile.png'))),
           ),
           Text(
-            "Sathit Sapmek",
+            "User A",
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
           Text(
-            "sathit3312@gmail.com",
+            "a@gmail.com",
             style: TextStyle(color: Colors.white, fontSize: 14),
           )
         ],

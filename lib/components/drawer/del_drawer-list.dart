@@ -1,91 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 
-import 'constants/drawer-section.dart';
-import 'components/menu/contacts.dart';
-import 'components/menu/dashboard.dart';
-import 'components/menu/events.dart';
-import 'components/drawer/my_drawer_header.dart';
-import 'components/menu/notes.dart';
-import 'components/menu/notifications.dart';
-import 'components/menu/privacy_policy.dart';
-import 'components/menu/send_feedback.dart';
-import 'components/menu/settings.dart';
+import '../../constants/drawer-section.dart';
 
-void main() {
-  runApp(const MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  // This widget is the root of your application.
+class MyDrawerList extends StatefulWidget {
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Basic UI',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Homepage'),
-    );
-  }
+  State<MyDrawerList> createState() => _MyDrawerListState();
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
+class _MyDrawerListState extends State<MyDrawerList> {
   var currentPage = DrawerSections.dashboard;
   @override
   Widget build(BuildContext context) {
-    var container;
-
-    if (currentPage == DrawerSections.dashboard) {
-      container = DashboardPage();
-    } else if (currentPage == DrawerSections.contacts) {
-      container = ContactsPage();
-    } else if (currentPage == DrawerSections.events) {
-      container = EventsPage();
-    } else if (currentPage == DrawerSections.notes) {
-      container = NotesPage();
-    } else if (currentPage == DrawerSections.settings) {
-      container = SettingsPage();
-    } else if (currentPage == DrawerSections.notifications) {
-      container = NotificationsPage();
-    } else if (currentPage == DrawerSections.privacy_policy) {
-      container = PrivacyPolicyPage();
-    } else if (currentPage == DrawerSections.send_feedback) {
-      container = SendFeedbackPage();
-    } else {
-      container = DashboardPage();
-    }
-
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green[700],
-        title: Text(widget.title),
-      ),
-      body: container,
-      drawer: Drawer(
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const MyHeaderDrawer(),
-              MyDrawerList(),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget MyDrawerList() {
     return Container(
       padding: const EdgeInsets.only(
         top: 15,
