@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'components/splash_screen/index.dart';
 import 'constants/drawer-section.dart';
 import 'components/menu/contacts.dart';
 import 'components/menu/dashboard.dart';
@@ -27,7 +28,8 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Homepage'),
+      // home: const MyHomePage(title: 'Homepage'),
+      home: const SplashLoader(),
     );
   }
 }
