@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'components/slider_screen/index.dart';
 import 'components/splash_screen/index.dart';
 import 'constants/drawer-section.dart';
 import 'components/menu/contacts.dart';
@@ -28,7 +29,6 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      // home: const MyHomePage(title: 'Homepage'),
       home: const SplashLoader(),
     );
   }
@@ -64,8 +64,10 @@ class _MyHomePageState extends State<MyHomePage> {
       container = PrivacyPolicyPage();
     } else if (currentPage == DrawerSections.send_feedback) {
       container = SendFeedbackPage();
+    } else if (currentPage == DrawerSections.slider_screen) {
+      container = SliderScreen();
     } else {
-      container = DashboardPage();
+      container = SliderScreen();
     }
 
     return Scaffold(
@@ -110,6 +112,8 @@ class _MyHomePageState extends State<MyHomePage> {
               currentPage == DrawerSections.privacy_policy ? true : false),
           menuItem(8, 'Send feedback', Icons.feedback_outlined,
               currentPage == DrawerSections.send_feedback ? true : false),
+          menuItem(9, 'Slider Screen', Icons.slideshow,
+              currentPage == DrawerSections.slider_screen ? true : false),
         ],
       ),
     );
@@ -138,6 +142,8 @@ class _MyHomePageState extends State<MyHomePage> {
               currentPage = DrawerSections.privacy_policy;
             } else if (id == 8) {
               currentPage = DrawerSections.send_feedback;
+            } else if (id == 9) {
+              currentPage = DrawerSections.slider_screen;
             } else {
               currentPage = DrawerSections.dashboard;
             }
