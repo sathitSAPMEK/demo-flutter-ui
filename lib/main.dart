@@ -66,8 +66,10 @@ class _MyHomePageState extends State<MyHomePage> {
       container = SendFeedbackPage();
     } else if (currentPage == DrawerSections.slider_screen) {
       container = SliderScreen();
-    } else {
+    } else if (currentPage == DrawerSections.navigation_bar) {
       container = SliderScreen();
+    } else {
+      throw Exception('current page is not found => Current: ${currentPage}');
     }
 
     return Scaffold(
@@ -164,7 +166,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   flex: 1,
                   child: Text(
                     title,
-                    style: TextStyle(
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 16,
                     ),

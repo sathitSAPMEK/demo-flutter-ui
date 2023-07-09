@@ -8,4 +8,5 @@ enum DrawerSections {
   privacy_policy,
   send_feedback,
   slider_screen,
+  navigation_bar,
 }
