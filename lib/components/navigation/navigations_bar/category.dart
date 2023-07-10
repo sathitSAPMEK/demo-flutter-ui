@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class ContactsPage extends StatelessWidget {
-  const ContactsPage({super.key});
+class CategoryPage extends StatelessWidget {
+  const CategoryPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return const Center(
-      child: Text('Contacts Page'),
+      child: Text('Category Page'),
     );
   }
 }

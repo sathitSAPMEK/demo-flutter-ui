@@ -22,7 +22,8 @@ class _SplashLoaderState extends State<SplashLoader> {
       developer.log('log me', name: 'Active Duration');
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (_) => const MyHomePage(title: 'Home Page'),
+          builder: (_) =>
+              const MyHomePage(title: 'Home Page', disabled_app_bar: true),
         ),
       );
     });

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:inspiration/components/animations/index.dart';
 
+import 'components/navigation/index.dart';
 import 'components/slider_screen/index.dart';
 import 'components/splash_screen/index.dart';
 import 'constants/drawer-section.dart';
@@ -35,8 +37,10 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage(
+      {super.key, required this.title, required this.disabled_app_bar});
   final String title;
+  final bool disabled_app_bar;
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -44,40 +48,80 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var currentPage = DrawerSections.dashboard;
-  @override
-  Widget build(BuildContext context) {
-    var container;
 
+  dynamic setContainer() {
+    var container;
     if (currentPage == DrawerSections.dashboard) {
-      container = DashboardPage();
+      container = const DashboardPage();
     } else if (currentPage == DrawerSections.contacts) {
-      container = ContactsPage();
+      container = const ContactsPage();
     } else if (currentPage == DrawerSections.events) {
-      container = EventsPage();
+      container = const EventsPage();
     } else if (currentPage == DrawerSections.notes) {
-      container = NotesPage();
+      container = const NotesPage();
     } else if (currentPage == DrawerSections.settings) {
-      container = SettingsPage();
+      container = const SettingsPage();
     } else if (currentPage == DrawerSections.notifications) {
-      container = NotificationsPage();
+      container = const NotificationsPage();
     } else if (currentPage == DrawerSections.privacy_policy) {
-      container = PrivacyPolicyPage();
+      container = const PrivacyPolicyPage();
     } else if (currentPage == DrawerSections.send_feedback) {
-      container = SendFeedbackPage();
+      container = const SendFeedbackPage();
     } else if (currentPage == DrawerSections.slider_screen) {
-      container = SliderScreen();
+      container = const SliderScreen();
     } else if (currentPage == DrawerSections.navigation_bar) {
-      container = SliderScreen();
+      container = const Navigation();
+    } else if (currentPage == DrawerSections.demo_animation) {
+      container = const DemoAnimation();
     } else {
       throw Exception('current page is not found => Current: ${currentPage}');
     }
 
+    return container;
+  }
+
+  DrawerSections setDrawerSection(id) {
+    if (id == 1) {
+      currentPage = DrawerSections.dashboard;
+    } else if (id == 2) {
+      currentPage = DrawerSections.contacts;
+    } else if (id == 3) {
+      currentPage = DrawerSections.events;
+    } else if (id == 4) {
+      currentPage = DrawerSections.notes;
+    } else if (id == 5) {
+      currentPage = DrawerSections.settings;
+    } else if (id == 6) {
+      currentPage = DrawerSections.notifications;
+    } else if (id == 7) {
+      currentPage = DrawerSections.privacy_policy;
+    } else if (id == 8) {
+      currentPage = DrawerSections.send_feedback;
+    } else if (id == 9) {
+      currentPage = DrawerSections.slider_screen;
+    } else if (id == 10) {
+      currentPage = DrawerSections.navigation_bar;
+    } else if (id == 11) {
+      currentPage = DrawerSections.demo_animation;
+    } else {
+      throw Exception('err => id not found');
+    }
+
+    return currentPage;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var container;
+
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.green[700],
-        title: Text(widget.title),
-      ),
-      body: container,
+      appBar: widget.disabled_app_bar == true
+          ? AppBar(
+              backgroundColor: Colors.green[700],
+              title: Text(widget.title),
+            )
+          : null,
+      body: setContainer(),
       drawer: Drawer(
         child: SingleChildScrollView(
           child: Column(
@@ -116,6 +160,8 @@ class _MyHomePageState extends State<MyHomePage> {
               currentPage == DrawerSections.send_feedback ? true : false),
           menuItem(9, 'Slider Screen', Icons.slideshow,
               currentPage == DrawerSections.slider_screen ? true : false),
+          menuItem(10, 'Navigation Bar', Icons.navigation_outlined,
+              currentPage == DrawerSections.navigation_bar ? true : false),
         ],
       ),
     );
@@ -128,31 +174,11 @@ class _MyHomePageState extends State<MyHomePage> {
         onTap: (() {
           Navigator.pop(context);
           setState(() {
-            if (id == 1) {
-              currentPage = DrawerSections.dashboard;
-            } else if (id == 2) {
-              currentPage = DrawerSections.contacts;
-            } else if (id == 3) {
-              currentPage = DrawerSections.events;
-            } else if (id == 4) {
-              currentPage = DrawerSections.notes;
-            } else if (id == 5) {
-              currentPage = DrawerSections.settings;
-            } else if (id == 6) {
-              currentPage = DrawerSections.notifications;
-            } else if (id == 7) {
-              currentPage = DrawerSections.privacy_policy;
-            } else if (id == 8) {
-              currentPage = DrawerSections.send_feedback;
-            } else if (id == 9) {
-              currentPage = DrawerSections.slider_screen;
-            } else {
-              currentPage = DrawerSections.dashboard;
-            }
+            currentPage = setDrawerSection(id);
           });
         }),
         child: Padding(
-          padding: EdgeInsets.all(15.0),
+          padding: const EdgeInsets.all(15.0),
           child: Row(
             children: [
               Expanded(
