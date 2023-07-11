@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:inspiration/components/animations/index.dart';
-
+import 'components/login/index.dart';
 import 'components/navigation/index.dart';
 import 'components/slider_screen/index.dart';
 import 'components/splash_screen/index.dart';
@@ -71,12 +70,11 @@ class _MyHomePageState extends State<MyHomePage> {
       container = const SliderScreen();
     } else if (currentPage == DrawerSections.navigation_bar) {
       container = const Navigation();
-    } else if (currentPage == DrawerSections.demo_animation) {
-      container = const DemoAnimation();
+    } else if (currentPage == DrawerSections.login) {
+      container = const LoginPage();
     } else {
       throw Exception('current page is not found => Current: ${currentPage}');
     }
-
     return container;
   }
 
@@ -102,11 +100,10 @@ class _MyHomePageState extends State<MyHomePage> {
     } else if (id == 10) {
       currentPage = DrawerSections.navigation_bar;
     } else if (id == 11) {
-      currentPage = DrawerSections.demo_animation;
+      currentPage = DrawerSections.login;
     } else {
       throw Exception('err => id not found');
     }
-
     return currentPage;
   }
 
@@ -117,7 +114,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: widget.disabled_app_bar == true
           ? AppBar(
-              backgroundColor: Colors.green[700],
+              backgroundColor: Color.fromARGB(255, 68, 218, 54),
               title: Text(widget.title),
             )
           : null,
@@ -162,6 +159,8 @@ class _MyHomePageState extends State<MyHomePage> {
               currentPage == DrawerSections.slider_screen ? true : false),
           menuItem(10, 'Navigation Bar', Icons.navigation_outlined,
               currentPage == DrawerSections.navigation_bar ? true : false),
+          menuItem(11, 'Login', Icons.login_outlined,
+              currentPage == DrawerSections.login ? true : false),
         ],
       ),
     );

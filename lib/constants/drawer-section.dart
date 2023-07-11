@@ -9,5 +9,5 @@ enum DrawerSections {
   send_feedback,
   slider_screen,
   navigation_bar,
-  demo_animation,
+  login,
 }
