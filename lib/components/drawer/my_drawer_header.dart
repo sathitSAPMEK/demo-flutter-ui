@@ -19,18 +19,18 @@ class _MyHeaderDrawerState extends State<MyHeaderDrawer> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
-            margin: EdgeInsets.only(bottom: 10),
+            margin: const EdgeInsets.only(bottom: 10),
             height: 70,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 image: DecorationImage(
                     image: AssetImage('assets/images/profile.png'))),
           ),
-          Text(
+          const Text(
             "User A",
             style: TextStyle(color: Colors.white, fontSize: 20),
           ),
-          Text(
+          const Text(
             "a@gmail.com",
             style: TextStyle(color: Colors.white, fontSize: 14),
           )

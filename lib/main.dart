@@ -188,14 +188,15 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
               Expanded(
-                  flex: 1,
-                  child: Text(
-                    title,
-                    style: const TextStyle(
-                      color: Colors.black,
-                      fontSize: 16,
-                    ),
-                  ))
+                flex: 1,
+                child: Text(
+                  title,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
