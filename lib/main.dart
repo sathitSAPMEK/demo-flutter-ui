@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inspiration/ui/scrollbar_tap/index.dart';
 import 'components/login/index.dart';
 import 'components/navigation/index.dart';
 import 'components/slider_screen/index.dart';
@@ -72,6 +73,8 @@ class _MyHomePageState extends State<MyHomePage> {
       container = const Navigation();
     } else if (currentPage == DrawerSections.login) {
       container = const LoginPage();
+    } else if (currentPage == DrawerSections.scrollbar_tab) {
+      container = ScrollableTab();
     } else {
       throw Exception('current page is not found => Current: ${currentPage}');
     }
@@ -101,6 +104,8 @@ class _MyHomePageState extends State<MyHomePage> {
       currentPage = DrawerSections.navigation_bar;
     } else if (id == 11) {
       currentPage = DrawerSections.login;
+    } else if (id == 12) {
+      currentPage = DrawerSections.scrollbar_tab;
     } else {
       throw Exception('err => id not found');
     }
@@ -161,6 +166,8 @@ class _MyHomePageState extends State<MyHomePage> {
               currentPage == DrawerSections.navigation_bar ? true : false),
           menuItem(11, 'Login', Icons.login_outlined,
               currentPage == DrawerSections.login ? true : false),
+          menuItem(12, 'Scrollbar Tab', Icons.tab_outlined,
+              currentPage == DrawerSections.scrollbar_tab ? true : false),
         ],
       ),
     );

@@ -10,4 +10,5 @@ enum DrawerSections {
   slider_screen,
   navigation_bar,
   login,
+  scrollbar_tab,
 }
